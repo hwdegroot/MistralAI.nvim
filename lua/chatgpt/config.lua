@@ -169,7 +169,7 @@ function M.defaults()
       },
     },
     openai_params = {
-      model = "mistral-small",
+      model = "mistral-tiny",
       --frequency_penalty = 0,
       --presence_penalty = 0,
       --max_tokens = 300,

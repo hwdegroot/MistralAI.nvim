@@ -310,15 +310,15 @@ function Api.setup()
     Api.EDITS_URL = ensureUrlProtocol(Api.OPENAI_API_HOST .. "/v1/chat/completions")
   end, "api.mistral.ai")
 
-  loadRequiredConfig("OPENAI_API_KEY", "OPENAI_API_KEY", "api_key_cmd", function(key)
-    Api.OPENAI_API_KEY = key
+  loadRequiredConfig("MISTRALAI_API_KEY", "MISTRALAI_API_KEY", "api_key_cmd", function(key)
+    Api.MISTRALAI_API_KEY = key
 
     loadOptionalConfig("OPENAI_API_TYPE", "OPENAI_API_TYPE", "api_type_cmd", function(type)
       if type == "azure" then
         loadAzureConfigs()
-        Api.AUTHORIZATION_HEADER = "api-key: " .. Api.OPENAI_API_KEY
+        Api.AUTHORIZATION_HEADER = "api-key: " .. Api.MISTRALAI_API_KEY
       else
-        Api.AUTHORIZATION_HEADER = "Authorization: Bearer " .. Api.OPENAI_API_KEY
+        Api.AUTHORIZATION_HEADER = "Authorization: Bearer " .. Api.MISTRALAI_API_KEY
       end
     end, "")
   end)

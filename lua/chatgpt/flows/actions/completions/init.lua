@@ -7,7 +7,7 @@ local Config = require("chatgpt.config")
 -- curl code to insert code between prompt and suffix
 -- curl https://api.openai.com/v1/completions \
 --   -H "Content-Type: application/json" \
---   -H "Authorization: Bearer $OPENAI_API_KEY" \
+--   -H "Authorization: Bearer $MISTRALAI_API_KEY" \
 --   -d '{
 --   "model": "text-davinci-003",
 --   "prompt": "Insert a roxygen skeleton to document this R function:\n\n",

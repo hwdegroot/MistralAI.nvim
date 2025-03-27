@@ -12,25 +12,25 @@ OpenAI's ChatGPT directly within the editor in response to your inquiries.
 ## Features
 
 - **Interactive Q&A**: Engage in interactive question-and-answer sessions with
-the powerful gpt model (ChatGPT) using an intuitive interface.
+  the powerful gpt model (ChatGPT) using an intuitive interface.
 
 - **Persona-based Conversations**: Explore various perspectives and have
-conversations with different personas by selecting prompts from Awesome ChatGPT
-Prompts.
+  conversations with different personas by selecting prompts from Awesome ChatGPT
+  Prompts.
 
 - **Code Editing Assistance**: Enhance your coding experience with an interactive
-editing window powered by the gpt model, offering instructions tailored for
-coding tasks.
+  editing window powered by the gpt model, offering instructions tailored for
+  coding tasks.
 
 - **Code Completion**: Enjoy the convenience of code completion similar to GitHub
-Copilot, leveraging the capabilities of the gpt model to suggest code snippets
-and completions based on context and programming patterns.
+  Copilot, leveraging the capabilities of the gpt model to suggest code snippets
+  and completions based on context and programming patterns.
 
 - **Customizable Actions**: Execute a range of actions utilizing the gpt model,
-such as grammar correction, translation, keyword generation, docstring creation,
-test addition, code optimization, summarization, bug fixing, code explanation,
-Roxygen editing, and code readability analysis. Additionally, you can define
-your own custom actions using a JSON file.
+  such as grammar correction, translation, keyword generation, docstring creation,
+  test addition, code optimization, summarization, bug fixing, code explanation,
+  Roxygen editing, and code readability analysis. Additionally, you can define
+  your own custom actions using a JSON file.
 
 For a comprehensive understanding of the extension's functionality, you can watch
 a plugin showcase [video](https://www.youtube.com/watch?v=7k0KZsheLP4)
@@ -46,7 +46,7 @@ The OpenAI API key can be provided in one of the following two ways:
 1. In the configuration option `api_key_cmd`, provide the path and arguments to
    an executable that returns the API key via stdout.
 
-1. Setting it via an environment variable called `$OPENAI_API_KEY`.
+1. Setting it via an environment variable called `$MISTRALAI_API_KEY`.
 
 Custom OpenAI API host with the configuration option `api_host_cmd` or
 environment variable called `$OPENAI_API_HOST`. It's useful if you can't access
@@ -69,8 +69,8 @@ For Azure deployments, you need to specify the URL base, the engine, and the API
 type. You can accomplish this in one of two ways:
 
 1. Use the configuration options `api_type_cmd`, `azure_api_base`,
-`azure_api_engine_cmd`, and `azure_api_version_cmd`. Each of these should be
-an executable command that returns the corresponding value.
+   `azure_api_engine_cmd`, and `azure_api_version_cmd`. Each of these should be
+   an executable command that returns the corresponding value.
 
 For example:
 
@@ -88,7 +88,7 @@ For example:
 ```
 
 2. Set the values via the environment variables `$OPENAI_API_TYPE`,
-`$OPENAI_API_BASE`, `$OPENAI_API_AZURE_ENGINE`, and `$OPENAI_API_AZURE_VERSION`.
+   `$OPENAI_API_BASE`, `$OPENAI_API_AZURE_ENGINE`, and `$OPENAI_API_AZURE_VERSION`.
 
 For example:
 
@@ -149,13 +149,14 @@ https://github.com/jackMort/ChatGPT.nvim/blob/main/lua/chatgpt/config.lua
 ### Example Configuration
 
 A simple configuration of the chat model could look something like this:
+
 ```lua
 {
   "jackMort/ChatGPT.nvim",
   event = "VeryLazy",
   config = function()
     require("chatgpt").setup({
-      -- this config assumes you have OPENAI_API_KEY environment variable set
+      -- this config assumes you have MISTRALAI_API_KEY environment variable set
       openai_params = {
         -- NOTE: model can be a function returning the model name
         -- this is useful if you want to change the model on the fly
@@ -194,7 +195,7 @@ leaves the API key easily readable by any process that can access the
 environment variables of other processes. In addition, it encourages the user
 to store the credential in clear-text in a configuration file.
 
-As an alternative to providing the API key via the `OPENAI_API_KEY` environment
+As an alternative to providing the API key via the `MISTRALAI_API_KEY` environment
 variable, the user is encouraged to use the `api_key_cmd` configuration option.
 The `api_key_cmd` configuration option takes a string, which is executed at
 startup, and whose output is used as the API key.
@@ -276,17 +277,17 @@ wk.register({
 [`actions.json`](./lua/chatgpt/flows/actions/actions.json) file for a detailed
 list. Available actions are:
 
-  1. `grammar_correction`
-  2. `translate`
-  3. `keywords`
-  4. `docstring`
-  5. `add_tests`
-  6. `optimize_code`
-  7. `summarize`
-  8. `fix_bugs`
-  9. `explain_code`
-  10. `roxygen_edit`
-  11. `code_readability_analysis` -- see [demo](https://youtu.be/zlU3YGGv2zY)
+1. `grammar_correction`
+2. `translate`
+3. `keywords`
+4. `docstring`
+5. `add_tests`
+6. `optimize_code`
+7. `summarize`
+8. `fix_bugs`
+9. `explain_code`
+10. `roxygen_edit`
+11. `code_readability_analysis` -- see [demo](https://youtu.be/zlU3YGGv2zY)
 
 All the above actions are using `gpt-3.5-turbo` model.
 
@@ -294,7 +295,7 @@ It is possible to define custom actions with a JSON file. See [`actions.json`](.
 
 An example of custom action may look like this: (`#` marks comments)
 
-```python
+````python
 {
   "action_name": {
     "type": "chat", # or "completion" or "edit"
@@ -317,7 +318,7 @@ An example of custom action may look like this: (`#` marks comments)
     }
   }
 }
-```
+````
 
 The `edit` strategy consists in showing the output side by side with the input and
 available for further editing requests.
